@@ -7,14 +7,16 @@ path = '/Users/enochbyers/Desktop/GONetwork/CorrectedImages'
 s = "CorrectedImage"
 end = ".png"
 
-star = raw_input("What is the name of the stars? ")
+star = raw_input("What is the name of the star? ")
 M = input("What is the stars magnitude? ")
 pic = raw_input("Which image number would you like to analyze? ")
 file = s.join(pic)
 im = Image.open(os.path.join(path, s + file + end))
 
+# Here we calculae the Flux of the star of interest
 F = 3640.0*(10.0**(-1.0*float(M)/2.5))
 
+# We will gather the pixel range we want to analyze for the star and then for some background pixels near it to compare.
 xpixrange = range(input("Enter X location of starting pixel "),1+input("Enter X value of the pixel after the ending pixel "))
 ypixrange = range(input("Enter Y location of starting pixel "),1+input("Enter Y value of the pixel after the ending pixel "))
 
@@ -27,6 +29,8 @@ numpix = len(xpixrange) * len(ypixrange)
 dy = 0
 y = 0
 
+# We now need to find the relative luminance of the dark pixels and the pixels containing the star data. 
+# Subtracting these two values lets us know how bright the star appears in the sky.
 for x in dxpixrange:
 	for y in dypixrange:
 		dpix = im.load()
@@ -44,6 +48,7 @@ for x in xpixrange:
 		
 
 Dn = y - (background * numpix) 
+# All the information accumulated to analyze the star is saved in a csv file to compare at a later date.
 StarData = open('StarData.csv', 'a')
 
 spamwriter = csv.writer(StarData)
