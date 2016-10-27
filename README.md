@@ -1,6 +1,6 @@
 # GONetwork
 
-# All files are revisions and combinations of previously written code.
+# Some files are revisions and combinations of previously written code.
 # Modifications have been made to achieve the desired results.
 
 # These codes together will operate a Point Grey Firefly MV 13SC2, taking 4 3.5s exposure rate color images at designated times.
@@ -9,6 +9,9 @@
 
 # This concept was used to cover and uncover a flashlight while taking readings of the luminosity during light cover.
 # When the flashlight is covered, the camera will take its images.
+
+# The programs CorrectedImages and ImageCalibration are my own original scripts for simple image processing for the GONetwork.
+# Additional changes will be made as this project grows.
 
 # Please be on the look out for updates to these files as I clean them up and make additional changes.
 
