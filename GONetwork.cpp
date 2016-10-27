@@ -1,5 +1,5 @@
 //=============================================================================
-// Copyright © 2008 Point Grey Research, Inc. All Rights Reserved.
+// Copyright Â© 2008 Point Grey Research, Inc. All Rights Reserved.
 //
 // This software is the confidential and proprietary information of Point
 // Grey Research, Inc. ("Confidential Information").  You shall not
@@ -57,7 +57,8 @@ void PrintBuildInfo()
 void PrintCameraInfo( CameraInfo* pCamInfo )
 {
 	cout << endl;
-	/*
+	/* Below code has been removed because camera info need not be printed to the console
+	   During operation.
 	cout << "*** CAMERA INFORMATION ***" << endl;
 	cout << "Serial number -" << pCamInfo->serialNumber << endl;
 	cout << "Camera model - " << pCamInfo->modelName << endl;
@@ -96,7 +97,6 @@ int RunSingleCamera( PGRGuid guid , int k_numImages , float k_shutterVal)
 		PrintError( error );
 		return -1;
 	}
-	// PrintCameraInfo(&camInfo);
 
 	// Check if the camera supports the FRAME_RATE property
 	PropertyInfo propInfo;
@@ -220,9 +220,6 @@ int RunSingleCamera( PGRGuid guid , int k_numImages , float k_shutterVal)
 		return -1;
 	}
 
-
-	
-	 
 	// Start capturing images
 	error = cam.StartCapture();
 	if (error != PGRERROR_OK)
@@ -306,7 +303,7 @@ int main(int /*argc*/, char** /*argv*/)
 	struct tm * ptm;
 	time ( &rawtime );
 	ptm = gmtime ( &rawtime );
-	// cout << "Current time: " << (ptm->tm_hour)%24 << ":" << (ptm->tm_min) << ":" << (ptm->tm_sec) << endl;
+	
 	if (int(ptm->tm_sec)==0 || ptm->tm_sec==30) {
 	outfile << "Current time: " << (ptm->tm_hour)%24 << ":" << (ptm->tm_min) << ":" << (ptm->tm_sec) << endl;
 		// Since this application saves images in the current folder
@@ -330,11 +327,10 @@ int main(int /*argc*/, char** /*argv*/)
 			return -1;
 		}
 
-		// cout << "Number of cameras detected: " << numCameras << endl;
 		for (unsigned int i=0; i < numCameras; i++)
 		{
-			float w = 3500.0;
-			float L;
+			float w = 3500.0; // This line is where the shutter value has been set (3.5 seconds in this case)
+			float L;          // The camera's first image at boot will use the previous shutter value from last use.  This variable is used to remind us that the first image cannot be trusted
 			if (L < 1.0)
 			{
 				outfile << "Ignore This Image!!" << w << endl;
