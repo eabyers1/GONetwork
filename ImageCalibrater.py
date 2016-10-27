@@ -30,7 +30,8 @@ dy = 0
 y = 0
 
 # We now need to find the relative luminance of the dark pixels and the pixels containing the star data. 
-# Subtracting these two values lets us know how bright the star appears in the sky.
+# Subtracting these two values lets us know how bright the star appears in the sky.   
+# This information can be used later to determine how bright the light pollution ring visible in the images is.
 for x in dxpixrange:
 	for y in dypixrange:
 		dpix = im.load()
