@@ -1,4 +1,9 @@
 #! /usr/bin/python
+
+# The code below is used to reduce the noise visible in the images taken by the GONetwork.
+# Dark frames are subtracted from each image in the specified file location once this program is run
+# Be sure that your file location and working directory are correct for YOUR COMPUTER
+
 import os, sys
 from PIL import Image, ImageChops
 
@@ -9,14 +14,6 @@ def Cimg_images():
 		i += 1
 		if filename.endswith(".png"):
 			img2 = Image.open('/Users/enochbyers/Desktop/GONetwork/RawImages/%s' %filename)
-# The code commented out was an attempt at combining multiple dark frames to see if I could get rid of all the bad pixels.
-# The result was not great but I left it in anyway.
-#			Cimg2 = Image.open('GONetwork-11D9M @1-4-46.png')
-#	for i in range(1,4):
-#	frame1 = Image.open('darkframe%i.png' % i)
-#	Cimg2 = ImageChops.subtract(Cimg2, frame1)
-#	Cimg2.save("CorrectedImage.png")
-
 			Cimg = ImageChops.subtract(img2, img1)
 			Cimg.save("CorrectedImage%s.png" %i)
 	
