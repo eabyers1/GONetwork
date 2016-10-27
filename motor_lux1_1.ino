@@ -4,6 +4,8 @@ This sketch shows how to use the SparkFunTSL2561
 library to read the AMS/TAOS TSL2561
 light sensor.
 
+It also incorporates code for controling the motor.
+
 Product page: https://www.sparkfun.com/products/11824
 Hook-up guide: https://learn.sparkfun.com/tutorials/getting-started-with-the-tsl2561-luminosity-sensor
 
@@ -162,12 +164,6 @@ void loop()
   //Serial.println("Forward");
   //stepper.step(STEPS);
   
-  // ms = 1000;
-  // light.manualStart();
-  //delay(6500);
-  // light.manualStop();
-  
-  
   // Once integration is complete, we'll retrieve the data.
   
   // There are two light sensors on the device, one for visible light
@@ -182,9 +178,6 @@ void cap(int n)
     if(n == 1) {
       stepper.step(-STEPS);
       
-    //}
-    //if (n == 2) {
-      //stepper.step(-STEPS);
     }
     delay(15000);
     stepper.step(STEPS);
