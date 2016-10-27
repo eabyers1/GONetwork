@@ -10,7 +10,7 @@
 # This concept was used to cover and uncover a flashlight while taking readings of the luminosity during light cover.
 # When the flashlight is covered, the camera will take its images.
 
-# The programs CorrectedImages and ImageCalibration are my own original scripts for simple image processing for the GONetwork.
+# The programs ServoLum, corrected_images and ImageCalibrater are my own original scripts for simple image processing for the GONetwork.
 # Additional changes will be made as this project grows.
 
 # Please be on the look out for updates to these files as I clean them up and make additional changes.
